@@ -157,20 +157,3 @@ npm test
 npm run build
 ```
 
----
-
-## 🎯 Technical Interview Preparation Guide
-
-### Q1: Why use `useMemo` for filtering and sorting rather than `useEffect` with local state?
-> **Answer**: Computing derived data inside a `useEffect` introduces an unnecessary extra render cycle: State updates $\rightarrow$ Component renders $\rightarrow$ Effect runs $\rightarrow$ Second state update $\rightarrow$ Re-render with new list.
-> By deriving `filteredProducts` and `displayedProducts` directly using `useMemo`, calculations happen synchronously during the primary render pass with zero intermediate flicker and zero redundant renders.
-
-### Q2: How is the dual-thumb range slider implemented without external heavy dependencies?
-> **Answer**: Two standard HTML5 `<input type="range">` elements are overlaid on top of a shared visual track container. Pointer events on the tracks are disabled (`pointer-events-none`) while pointer events on the custom pseudo-element thumbs are enabled (`pointer-events: auto`). State constraints guarantee that `minVal <= maxVal - minGap`, preventing handle overlap or inversion while maintaining native keyboard accessibility.
-
-### Q3: Why is immutability crucial when sorting?
-> **Answer**: `Array.prototype.sort()` mutates the target array in place. If executed directly on the filtered results without copying, it can corrupt reference equality checks in React memoization hooks, cause unpredictable side effects, or accidentally mutate the underlying dataset. Using `[...filteredProducts].sort(...)` guarantees a clean, pure operation.
-
-### Q4: How do multiple selected categories interact with rating and price?
-> **Answer**: Within categories, the selection is **disjunctive (OR)**: a product matches if its category is *in* the selected list. Across different filter dimensions (Category vs. Price vs. Rating vs. Search), the condition is **conjunctive (AND)**: every active filter criteria must be satisfied for the product to be displayed.
-
