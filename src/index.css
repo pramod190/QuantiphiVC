@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  }
+}
+
+/* Custom styling for Dual-Thumb Range Slider */
+.range-slider-thumb::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  pointer-events: auto;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #2563eb;
+  border: 3px solid #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.range-slider-thumb::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 0 3px 8px rgba(37, 99, 235, 0.4);
+}
+
+.range-slider-thumb::-webkit-slider-thumb:active {
+  transform: scale(1.25);
+  background-color: #1d4ed8;
+}
+
+.range-slider-thumb::-moz-range-thumb {
+  pointer-events: auto;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #2563eb;
+  border: 3px solid #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.range-slider-thumb::-moz-range-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 0 3px 8px rgba(37, 99, 235, 0.4);
+}
+
+.range-slider-thumb::-moz-range-thumb:active {
+  transform: scale(1.25);
+  background-color: #1d4ed8;
+}
+
